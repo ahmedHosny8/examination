@@ -313,12 +313,50 @@ body {
 
 .section-signup {
   min-height: 100vh;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .section-signup h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.section-signup__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .section-signup__layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.section-signup__img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: var(--border-radius-md);
+  border-bottom-left-radius: var(--border-radius-md);
+  border: 1px solid var(--color-grey-100);
+}
+@media (min-width: 768px) {
+  .section-signup__img {
+    display: block;
+  }
+}
+
+.section-signin {
+  margin-top: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section-signin h1 {
   font-size: 2rem;
   font-weight: 600;
   text-align: center;
@@ -345,7 +383,8 @@ body {
   padding: 24px 40px;
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
-  border-radius: var(--border-radius-md);
+  border-top-right-radius: var(--border-radius-md);
+  border-bottom-right-radius: var(--border-radius-md);
   overflow: hidden;
   font-size: 14px;
   display: flex;
@@ -373,6 +412,42 @@ body {
   outline-offset: -1px;
 }
 .form-signup__err {
+  color: var(--color-red-700);
+}
+
+.form-signin {
+  min-width: 360px;
+  padding: 24px 40px;
+  background-color: var(--color-grey-0);
+  border: 1px solid var(--color-grey-100);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-signin__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-signin__label {
+  font-weight: 500;
+}
+.form-signin__input {
+  font-family: inherit;
+  color: inherit;
+  border: 1px solid var(--color-grey-300);
+  background-color: var(--color-grey-0);
+  border-radius: var(--border-radius-sm);
+  padding: 0.5rem;
+}
+.form-signin__input:focus {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: -1px;
+}
+.form-signin__err {
   color: var(--color-red-700);
 }
 

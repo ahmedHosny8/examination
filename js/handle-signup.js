@@ -1,4 +1,4 @@
-function handleSignupFormSubmit(event) {
+export default function handleSignup(event) {
   event.preventDefault();
 
   const firstName = document.getElementById('first-name').value;
@@ -77,5 +77,3 @@ function handleSignupFormSubmit(event) {
     window.location.replace('signin.html');
   }
 }
-
-export default handleSignupFormSubmit;
