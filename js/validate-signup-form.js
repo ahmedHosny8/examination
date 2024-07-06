@@ -25,21 +25,22 @@ function handleSignupFormSubmit(event) {
   let isValidPassword = false;
   let isValidConfirmPassword = false;
 
-  if (firstName === '') {
+  const namePattern = /^[A-Za-z]+$/;
+  if (firstName === '' || !namePattern.test(firstName)) {
     firstNameErrMsg.textContent = 'Please provide a valid name.';
   } else {
     firstNameErrMsg.textContent = '';
     isValidFirstName = true;
   }
 
-  if (lastName === '') {
+  if (lastName === '' || !namePattern.test(lastName)) {
     lastNameErrMsg.textContent = 'Please provide a valid name.';
   } else {
     lastNameErrMsg.textContent = '';
     isValidLastName = true;
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailRegex.test(email)) {
     emailErrMsg.textContent = 'Please enter a valid email.';
   } else {
@@ -47,8 +48,8 @@ function handleSignupFormSubmit(event) {
     isValidEmail = true;
   }
 
-  if (password === '' || password.length < 5) {
-    passwordErrMsg.textContent = 'Must be at least 5 characters';
+  if (password === '' || password.length < 8) {
+    passwordErrMsg.textContent = 'Must be at least 8 characters';
   } else {
     passwordErrMsg.textContent = '';
     isValidPassword = true;
