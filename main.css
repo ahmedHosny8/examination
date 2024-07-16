@@ -244,7 +244,10 @@ summary {
   --color-blue-700: #0369a1;
   --color-green-100: #dcfce7;
   --color-green-700: #15803d;
+  --color-green-800: #166534;
   --color-yellow-100: #fef9c3;
+  --color-yellow-500: #f59e0b;
+  --color-yellow-600: #d97706;
   --color-yellow-700: #a16207;
   --color-silver-100: #e5e7eb;
   --color-silver-700: #374151;
@@ -363,6 +366,39 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.section-results {
+  margin-top: 120px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 48px 40px;
+  background-color: var(--color-grey-0);
+  border: 1px solid var(--color-grey-100);
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+}
+.section-results__header {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+.section-results hr {
+  margin: 1rem 0;
+  border: 1px solid var(--color-grey-100);
+}
+.section-results__title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+}
+.section-results__content {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .btn {
   cursor: pointer;
   border: none;
@@ -376,6 +412,13 @@ body {
 }
 .btn:hover {
   background-color: var(--color-brand-700);
+}
+
+.btn--submit {
+  background-color: var(--color-green-700);
+}
+.btn--submit:hover {
+  background-color: var(--color-green-800);
 }
 
 .form-signup {
@@ -448,6 +491,50 @@ body {
   outline-offset: -1px;
 }
 .form-signin__err {
+  color: var(--color-red-700);
+}
+
+.result-box {
+  padding: 24px;
+  background-color: var(--color-brand-100);
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.result-box__top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.result-box__top .icon {
+  font-size: 32px;
+}
+.result-box__top .icon--green {
+  color: var(--color-green-700);
+}
+.result-box__top .icon--red {
+  color: var(--color-red-700);
+}
+.result-box__top .count {
+  font-size: 24px;
+  font-weight: 600;
+}
+.result-box__top .count--green {
+  color: var(--color-green-700);
+}
+.result-box__top .count--red {
+  color: var(--color-red-700);
+}
+.result-box__title {
+  font-size: 24px;
+  font-weight: 600;
+}
+.result-box__title--green {
+  color: var(--color-green-700);
+}
+.result-box__title--red {
   color: var(--color-red-700);
 }
 

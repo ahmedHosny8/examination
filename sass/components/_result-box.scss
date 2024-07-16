@@ -1,0 +1,54 @@
+.result-box {
+  padding: 24px;
+  background-color: var(--color-brand-100);
+  border-radius: var(--border-radius-sm);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .icon {
+      font-size: 32px;
+
+      &--green {
+        color: var(--color-green-700);
+      }
+
+      &--red {
+        color: var(--color-red-700);
+      }
+    }
+
+    .count {
+      font-size: 24px;
+      font-weight: 600;
+
+      &--green {
+        color: var(--color-green-700);
+      }
+
+      &--red {
+        color: var(--color-red-700);
+      }
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+
+    &--green {
+      color: var(--color-green-700);
+    }
+
+    &--red {
+      color: var(--color-red-700);
+    }
+  }
+}

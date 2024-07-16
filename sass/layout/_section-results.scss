@@ -1,0 +1,37 @@
+.section-results {
+  margin-top: 120px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 48px 40px;
+  background-color: var(--color-grey-0);
+  border: 1px solid var(--color-grey-100);
+  border-radius: var(--border-radius-md);
+
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  hr {
+    margin: 1rem 0;
+    border: 1px solid var(--color-grey-100);
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  &__content {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

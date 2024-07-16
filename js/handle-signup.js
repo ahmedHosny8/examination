@@ -1,3 +1,6 @@
+import { User } from './class.js';
+import { fetchUsers, createUser } from './api.js';
+
 export default function handleSignup(event) {
   event.preventDefault();
 
@@ -16,64 +19,79 @@ export default function handleSignup(event) {
   const confiormPasswordErrMsg = document.querySelector(
     '.form-signup__err--confirm-pass'
   );
-
   console.log(firstName, lastName, email, password, confirmPassword);
 
-  let isValidFirstName = false;
-  let isValidLastName = false;
-  let isValidEmail = false;
-  let isValidPassword = false;
-  let isValidConfirmPassword = false;
+  const validateUser = async () => {
+    const users = await fetchUsers();
+    console.log(users);
 
-  const namePattern = /^[A-Za-z]+$/;
-  if (firstName === '' || !namePattern.test(firstName)) {
-    firstNameErrMsg.textContent = 'Please provide a valid name.';
-  } else {
-    firstNameErrMsg.textContent = '';
-    isValidFirstName = true;
-  }
+    const user = users.find((user) => user.email === email);
+    console.log(user);
 
-  if (lastName === '' || !namePattern.test(lastName)) {
-    lastNameErrMsg.textContent = 'Please provide a valid name.';
-  } else {
-    lastNameErrMsg.textContent = '';
-    isValidLastName = true;
-  }
+    let isValidFirstName = false;
+    let isValidLastName = false;
+    let isValidEmail = false;
+    let isValidPassword = false;
+    let isValidConfirmPassword = false;
 
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  if (!emailRegex.test(email)) {
-    emailErrMsg.textContent = 'Please enter a valid email.';
-  } else {
-    emailErrMsg.textContent = '';
-    isValidEmail = true;
-  }
+    const namePattern = /^[A-Za-z]+$/;
+    if (firstName === '' || !namePattern.test(firstName)) {
+      firstNameErrMsg.textContent = 'Please provide a valid name.';
+    } else {
+      firstNameErrMsg.textContent = '';
+      isValidFirstName = true;
+    }
 
-  if (password === '' || password.length < 8) {
-    passwordErrMsg.textContent = 'Must be at least 8 characters';
-  } else {
-    passwordErrMsg.textContent = '';
-    isValidPassword = true;
-  }
+    if (lastName === '' || !namePattern.test(lastName)) {
+      lastNameErrMsg.textContent = 'Please provide a valid name.';
+    } else {
+      lastNameErrMsg.textContent = '';
+      isValidLastName = true;
+    }
 
-  if (confirmPassword !== password) {
-    confiormPasswordErrMsg.textContent = 'Passwords must match';
-  } else {
-    confiormPasswordErrMsg.textContent = '';
-    isValidConfirmPassword = true;
-  }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      emailErrMsg.textContent = 'Please enter a valid email.';
+    } else if (user) {
+      emailErrMsg.textContent = 'This Email already have an account.';
+    } else {
+      emailErrMsg.textContent = '';
+      isValidEmail = true;
+    }
 
-  if (
-    !isValidFirstName ||
-    !isValidLastName ||
-    !isValidEmail ||
-    !isValidPassword ||
-    !isValidConfirmPassword
-  ) {
-    return;
-  } else {
-    console.log('Validation Done');
+    if (password === '' || password.length < 8) {
+      passwordErrMsg.textContent = 'Must be at least 8 characters';
+    } else {
+      passwordErrMsg.textContent = '';
+      isValidPassword = true;
+    }
 
-    // Redirect the User to signin Page
-    window.location.replace('signin.html');
-  }
+    if (confirmPassword === '') {
+      confiormPasswordErrMsg.textContent = 'Passwords must match';
+    } else if (confirmPassword !== password) {
+      confiormPasswordErrMsg.textContent = 'Passwords must match';
+    } else {
+      confiormPasswordErrMsg.textContent = '';
+      isValidConfirmPassword = true;
+    }
+
+    if (
+      !isValidFirstName ||
+      !isValidLastName ||
+      !isValidEmail ||
+      !isValidPassword ||
+      !isValidConfirmPassword
+    ) {
+      return;
+    } else {
+      console.log('Validation Done');
+      const user = new User(firstName, lastName, email, password);
+      createUser(user);
+      console.log('User created');
+
+      // Redirect the User to signin Page
+      window.location.replace('signin.html');
+    }
+  };
+  validateUser();
 }
